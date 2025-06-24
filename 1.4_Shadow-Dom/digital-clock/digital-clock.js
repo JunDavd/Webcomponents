@@ -1,25 +1,32 @@
 
+
 const template = document.createElement('template')
-template.innerHTML = `<div>
+template.innerHTML = `
+<style>
+h1{
+    color: var(--digital-clock-color, coral)
+}
+</style>
+<div>
     <h1></h1>
 </div>
 `
-
 class DigitalClock extends HTMLElement{
     constructor(){
         super()
+        this.attachShadow({mode: "open"})
     }
 
     connectedCallback(){
         this.showCurrentTime()
-        setInterval(() => {this.querySelector('h1').textContent = this.getCurrentTime()}, 1000);
+        setInterval(() => {this.shadowRoot.querySelector('h1').textContent = this.getCurrentTime()}, 1000);
     }
 
     showCurrentTime(){
         const templateCopy = template.content.cloneNode(true)
         const now = this.getCurrentTime()
         templateCopy.querySelector('h1').textContent = now
-        this.appendChild(templateCopy)
+        this.shadowRoot.appendChild(templateCopy)
     }
 
     getCurrentTime(){
