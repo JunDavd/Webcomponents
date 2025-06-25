@@ -47,6 +47,17 @@ class TodoItem extends HTMLElement{
 
         this.shadowRoot.appendChild(templateCopy)
     }
+
+    
+    static get observedAttributes(){
+        return ['text']
+    }
+
+    attributeChangedCallback(name, oldValue, newValue){
+        if(name === 'text'){
+            this.shadowRoot.querySelector('span').textContent = newValue
+        }
+    }
 }
 
 window.customElements.define('todo-item',TodoItem)

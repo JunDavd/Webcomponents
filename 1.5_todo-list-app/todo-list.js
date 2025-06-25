@@ -16,17 +16,20 @@ class TodoList extends HTMLElement{
 
     connectedCallback(){
         const templateCopy = template.content.cloneNode(true)
+        // const classTodoItem = templateCopy.querySelector('.todo-items-wrapper')
         const inputActionComponent = templateCopy.querySelector('input-action')
         inputActionComponent.addEventListener('input-action-submit', (event) =>{
             const text = event.detail
-            const newTodoItem = document.createElement('div')
-            newTodoItem.innerHTML = `<todo-item text= "${text}"></todo-item>`
+            const newTodoItem = document.createElement('todo-item')
+            
             this.shadowRoot.querySelector('.todo-items-wrapper').appendChild(newTodoItem)
+            newTodoItem.setAttribute('text', text)
+            
         })
         
         this.shadowRoot.appendChild(templateCopy)
     }
-
+    
 }
 
 window.customElements.define('todo-list',TodoList)
