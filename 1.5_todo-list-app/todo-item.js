@@ -13,7 +13,6 @@ template.innerHTML = `
 </div>
 `
 
-
 class TodoItem extends HTMLElement{
     constructor(){
         super()

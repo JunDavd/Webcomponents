@@ -6,22 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <input-action placeholder="Escribe la tarea" button-label="+"></input-action> 
-    <todo-item id="tre" text="estudiar Js" button-label="BORRAR" isChecked></todo-item>
-
+    <todo-list></todo-list>
     <script type="module" src="./input-action.js"></script>
     <script type="module" src="./todo-item.js"></script>
-    <script>
-        const inputAction = document.querySelector('input-action')
-        inputAction.addEventListener('input-action-submit', (event) => {
-            console.log(event.detail)
-        })
-
-        const todoItem = document.querySelector('todo-item')
-        todoItem.addEventListener('todo-item-status-update', (event) =>{
-          console.log(event.detail.isChecked)  
-        })
-    </script>
+    <script type="module" src="./todo-list.js"></script>
 </body>
 </html>
